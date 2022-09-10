@@ -4,6 +4,7 @@
             <%= link_to image_tag("/user_images/#{@post.user.profiel_image}"),"/users/#{@post.user_id}" %>
             <p><%= link_to "#{@post.user.name}", "/users/#{@post.user_id}" %></p>
         </div>
+        <%# ユーザー編集ボタン %>
         <div class="edit-icon">
             <% if @post.user_id == @current_user.id %>
                 <%= link_to "...", "/posts/#{@post.id}/edit" %>
@@ -14,6 +15,7 @@
         <img src="<%= "/post_images/#{@post.image}" %> ">
         <p><%=safe_join(@post.content.split("\n"),tag(:br))%></p>
     </div>
+    <%# いいね機能 %>
     <div class="like">
     <% if Like.find_by(user_id: @current_user.id , post_id: @post.id)%>
         <%= link_to image_tag("like.png"),"/likes/#{@post.id}/destroy" ,data: { turbo_method: :post} %>
@@ -25,6 +27,7 @@
         <% end %>
     <% end %>
     </div>
+    <%# コメント機能 %>
     <div class="comments">
         <div class="comments-containers">
             <% @comments.each do |comment| %>
