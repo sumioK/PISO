@@ -31,12 +31,13 @@ class UsersController < ApplicationController
         flash[:alert] = "パスワードとパスワード確認が一致しません"
         redirect_to("/signup")
       end
+      @user.save
   end
   
   def show
     @user = User.find_by(id: params[:id])
-    @posts = Post.where(user_id: @user.id)
-    @likes = Like.where(user_id: @user.id)
+    @posts = Post.where(user_id: params[:id])
+    @likes = Like.where(user_id: params[:id])
   end
 
   def login_form
@@ -73,12 +74,13 @@ class UsersController < ApplicationController
   
   end
 
-  def edit
+  def edite
     @user = User.find_by(id: params[:id])
   end
 
   def update
     @user = User.find_by(id: params[:id])
+    puts @user.name
     @user.name = params[:name]
     @user.email = params[:email]
     @user.introduction = params[:introduction]
@@ -93,7 +95,8 @@ class UsersController < ApplicationController
       flash[:notice] = "編集が完了しました!"
       redirect_to("/users/#{@user.id}")
     else
-      render("users/edit")
+      flash[:alert] = "更新できませんでした"
+      redirect_to("/users/#{@user.id}/edit")
     end
   end
 

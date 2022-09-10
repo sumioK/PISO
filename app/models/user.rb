@@ -3,7 +3,7 @@ has_secure_password
 validates :introduction, length: {maximum: 250}
 validates :name, presence: true
 validates :email, presence: true ,uniqueness: true, format: {with: /@/,message:"不正なメールアドレスです"}
-validates :password, presence: true
+validates :password_digest, presence: true
 
     has_many :posts, dependent: :destroy
     has_many :likes, dependent: :destroy
