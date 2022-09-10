@@ -1,0 +1,12 @@
+<% @posts.each do |post| %>
+<div class="posts">
+    <div class="post_user_icon">
+        <%= link_to image_tag("/user_images/#{post.user.profiel_image}") , "/users/#{post.user.id}" %>
+        <p><%= post.user.name %></p>
+    </div>
+    <div class="post_body">
+        <%= link_to image_tag("/post_images/#{post.image}") , "/posts/#{post.id}" %>
+        <%= post.content%>
+    </div>
+</div>
+<% end %>

@@ -1,0 +1,4 @@
+<%= form_tag("/comments/#{@comment.id}/update") do %>
+    <input name="comment" value="<%=@comment.comment %>">
+    <input type="submit" value="更新">
+<% end%>

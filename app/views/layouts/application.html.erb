@@ -1,15 +1,59 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Piso</title>
+    <title>PISO</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= favicon_link_tag('favicon.ico') %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Allura&display=swap" rel="stylesheet">
+    <%= javascript_importmap_tags %>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <div class="header-container">
+        <div class="header-logo">
+            <% if @current_user %>
+              <h2><%= link_to "PISO" , "/posts/index" %></h2>
+            <% else %>
+              <h2><%= link_to "PISO" , "/" %></h2>
+            <% end %>
+        </div>
+        <div class="header-icons">
+          <ul class='heaer_nav'>
+          <% if !@current_user %>
+            <li><%= link_to image_tag("posts.png"),"/posts/index"%></li>
+            <li><%= link_to image_tag("signup.png"),"/signup"%></li>
+            <li><%= link_to image_tag("enter.png"),"/login"%></li>
+          <% else%>
+            <li><%= link_to image_tag("dog&cat.png"),"/users/index"%></li>
+            <li><%= link_to image_tag("/user_images/#{@current_user.profiel_image}") , "/users/#{@current_user.id}" , data: {"turbolinks" => false} %></li>
+            <li><%= link_to image_tag("post.png") , "/posts/new" , data: {"turbolinks" => false}%></li>
+          <% end%>
+          </ul>
+        </div>
+      </div>
+    </header>
+    <div class="flash">
+      <% if flash[:notice] %>
+        <div class="success">
+            <p><%= flash[:notice] %></p>
+        </div>
+      <% elsif flash[:alert] %>
+        <div class="alert">
+          <p><%= flash[:alert] %></p>
+        </div>
+      <% else %>
+        <div class="no-flash">
+        </div>
+      <% end %>
+    </div>
+      <%= yield %>
   </body>
 </html>

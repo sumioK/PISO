@@ -1,0 +1,54 @@
+<div class="posts-show">
+    <div class="icon-and-name-and-edit">
+        <div class="icon-and-name">
+            <%= link_to image_tag("/user_images/#{@post.user.profiel_image}"),"/users/#{@post.user_id}" %>
+            <p><%= link_to "#{@post.user.name}", "/users/#{@post.user_id}" %></p>
+        </div>
+        <div class="edit-icon">
+            <% if @post.user_id == @current_user.id %>
+                <%= link_to "...", "/posts/#{@post.id}/edit" %>
+            <% end %>
+        </div>
+    </div>
+    <div class="post-body">
+        <img src="<%= "/post_images/#{@post.image}" %> ">
+        <p><%=safe_join(@post.content.split("\n"),tag(:br))%></p>
+    </div>
+    <div class="like">
+    <% if Like.find_by(user_id: @current_user.id , post_id: @post.id)%>
+        <%= link_to image_tag("like.png"),"/likes/#{@post.id}/destroy" ,data: { turbo_method: :post} %>
+        <p><%= @likes_count %></p>
+    <% else %>
+        <%= link_to image_tag("unlike.png"),"/likes/#{@post.id}/create", data: { turbo_method: :post} %>
+        <% if @likes_count > 0 %>
+            <p><%= @likes_count %></p>
+        <% end %>
+    <% end %>
+    </div>
+    <div class="comments">
+        <div class="comments-containers">
+            <% @comments.each do |comment| %>
+                <div class="comments-container">
+                    <%= link_to image_tag("/user_images/#{comment.user.profiel_image}") , "/users/#{comment.user.id}" %>
+                    <p>
+                        <%= comment.user.name %> : <%=comment.comment %>  
+                    </p>
+                    <% if comment.user_id == @current_user.id %>
+                        <%= link_to image_tag("trash.png"),"/comments/#{comment.id}/destroy", data: { turbo_method: :post, turbo_confirm: "本当に削除しますか？"} , class:"delete-btn"%>
+                    <% end %>
+                </div>
+            <% end %>
+        </div>
+        <%= form_tag("/comments/#{@post.id}/create") do %>
+            <div class="comments-form">
+                <div class="comment-input-container">
+                    <input name="comment" class="comment-input">
+                </div>
+                <div class="comment-submit-container">
+                    <input type="submit" value="コメント" class="comment-submit">
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
+

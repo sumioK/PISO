@@ -1,0 +1,93 @@
+<div class="show-profiel">
+    <div class="show-profiel-line">
+        <div class="show-profiel-image">
+            <img src="<%= "/user_images/#{@user.profiel_image}"%>">
+        </div>
+        <% if @user == @current_user %>
+            <div class="setting-image">
+                <%= link_to image_tag("setting.png"),"/users/#{@user.id}/edit" , data: {"turbolinks" => false}%>
+            </div>
+            <div class="logout-button">
+                <%= link_to image_tag("logout.png") , "/logout" , data: { turbo_method: :post }%>
+            </div>
+        <% end %>
+        <% if @user != @current_user %>
+            <div class="follow-unfollow">
+                <% if @user.is_followed_by?(@current_user) %>
+                    <%= link_to("フォロー解除",user_relationship_path(@user), data: { turbo_method: :delete}, class: "unfollow-btn") %>
+                <% else %>
+                    <%= link_to("フォロー",user_relationships_path(@user), data: { turbo_method: :post},class: "follow-btn")%>
+                <% end %>
+            </div>
+        <% end %>
+    </div>
+    <h3 class="profiel-name"><%= @user.name %></h3>
+    <p class="user-introduction"><%= safe_join(@user.introduction.to_s.split("\n"),tag(:br)) %></p>
+    <div class="profiel-under-container">
+        <p class="post-count"><%= "投稿#{@posts.length}件" %></p>
+        <%= link_to "フォロー#{@user.followings.count}人", followings_user_path(@user) %>
+        <%= link_to "フォロワー#{@user.followers.count}人", followers_user_path(@user) %>
+    </div>
+</div>
+
+<div class="tab" id="js-tab">
+    <div class="show-titles">
+        <h2 class="show-tab-title is-active" data-nav="0">Posts</h2>
+        <h2 class="show-tab-title" data-nav="1">Likes</h2>
+    </div>
+    <div class="show-tab-content" data-content="0">
+        <% @posts.each do |post| %>
+            <div class="show-post-body">
+                <%= link_to image_tag("/post_images/#{post.image}") , "/posts/#{post.id}" %>
+            </div>
+        <% end %>
+    </div>
+    <div class="show-tab-content" data-content="1">
+        <% @likes.each do |like|%>
+            <div class="show-post-body">
+                <%= link_to image_tag("/post_images/#{like.post_id}.jpg") , "/posts/#{like.post_id}"%>
+            </div>
+        <% end %>
+    </div>
+</div>
+<script>
+    (()=>{
+        const $doc = document;
+        const $tab = $doc.getElementById("js-tab");
+        const $nav = $tab.querySelectorAll('[data-nav]');
+        const $content = $tab.querySelectorAll('[data-content]')
+        const ACTIVE_CLASS = 'is-active'
+        const navLength = $nav.lengt
+
+
+        const init =() =>{
+            $content[0].style.display = "flex";
+        }
+        init();
+
+
+        const handleClick = (e) => {
+            e.preventDefault();
+            
+            const $this = e.target;
+            const targetValue = $this.dataset.nav
+
+            let index = 0;
+            while(index < navLength) {
+                $content[index].style.display = 'none';
+                $nav[index].classList.remove(ACTIVE_CLASS)
+                index++;
+            }
+
+            $tab.querySelectorAll('[data-content="' + targetValue + '"]')[0].style.display = "flex"
+            $nav[targetValue].classList.add(ACTIVE_CLASS)
+            
+        }
+        
+        let index = 0;
+        while(index < navLength){
+        $nav[index].addEventListener('click' , (e) => handleClick(e));
+        index ++;
+        }
+    })();
+</script>

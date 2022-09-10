@@ -1,0 +1,56 @@
+<div class="profiel-edit">
+    <div class="title-container">
+        <h1 class="page-title">ユーザー編集</h1>
+        <%= link_to image_tag("trash.png"),"/users/#{@user.id}/delete" ,data: { turbo_method: :post, turbo_confirm: "本当に削除しますか？"} , class:"delete-btn"%>
+    </div>
+    <%= form_tag("/users/#{@user.id}/update" , {multipart:true}) do %> 
+        <div class="profiel-container">
+            <div class="edit-left">
+                <p>ユーザー名</p>
+                <p> メールアドレス</p>
+                <p>プロフィール</p>
+                <p class="edit-img-p">画像</p>
+            </div>
+            <div class="edit-right">
+                <input name="name" value="<%= @user.name %>" class="user-name">
+                <br>
+                <input name="email" value="<%= @user.email %>" class="user-email">
+                <br>
+                <textarea name="introduction" class="user-body"><%= @user.introduction %></textarea>
+                <br>
+                <input name="profiel_image" type="file" class="user-picture" id="user-img">
+            </div>
+        </div>
+        <div id="edit-image" class="img-cont"><img class="edit-img" src="/user_images/<%= @user.profiel_image %>"></div>
+        <br>
+        <div class="submit-container">
+            <input type="submit" value="更新" class="user-submit">
+        </div>
+    <% end %>
+</div>
+<script>
+    (()=>{
+        document.addEventListener('DOMContentLoaded', () => {
+            const createImageHTML = (blob) => {
+            const imageElement = document.getElementById('edit-image');
+            const blobImage = document.createElement('img');
+            blobImage.setAttribute('class', 'edit-img')
+            blobImage.setAttribute('src', blob);
+
+            imageElement.appendChild(blobImage);
+            };
+
+            document.getElementById('user-img').addEventListener('change', (e) => {
+            const imageContent = document.querySelector('.edit-img');
+            if (imageContent){
+                imageContent.remove();
+            }
+
+            const file = e.target.files[0];
+            const blob = window.URL.createObjectURL(file);
+            createImageHTML(blob);
+            });
+        });
+    })();
+
+</script>
