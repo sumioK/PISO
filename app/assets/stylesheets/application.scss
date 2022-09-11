@@ -454,15 +454,16 @@
         }
         .follow-unfollow{
             .unfollow-btn{
+                font-size: 18px;
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 margin: 0 auto;
-                padding: 1em 2em;
-                width: 150px;
+                padding: 0.5em 2em;
+                width: 180px;
                 color: white;
                 font-size: 18px;
-                font-weight: 700;
+                font-weight: 500;
                 background-color: black;
                 border-radius: 50vh;
                 text-decoration: none;
@@ -475,8 +476,8 @@
                 justify-content: center;
                 align-items: center;
                 margin: 0 auto;
-                padding: 1em 2em;
-                width: 150px;
+                padding: 0.5em 2em;
+                width: 180px;
                 color: black;
                 font-size: 18px;
                 font-weight: 700;
@@ -1216,10 +1217,10 @@
                 align-items: center;
                 margin: 0 auto;
                 padding: 0.5em 1em;
-                width: 100px;
+                width: 130px;
                 color: white;
                 font-size: 15px;
-                font-weight: 700;
+                font-weight: 500;
                 background-color: black;
                 border-radius: 50vh;
                 text-decoration: none;
@@ -1233,10 +1234,10 @@
                 align-items: center;
                 margin: 0 auto;
                 padding: 0.5em 1em;
-                width: 100px;
+                width: 130px;
                 color: black;
                 font-size: 15px;
-                font-weight: 700;
+                font-weight: 500;
                 background-color: white;
                 border-radius: 50vh;
                 text-decoration: none;
