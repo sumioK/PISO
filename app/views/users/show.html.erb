@@ -8,16 +8,16 @@
                 <%= link_to image_tag("setting.png"),"/users/#{@user.id}/edit" %>
             </div>
             <div class="logout-button">
-                <%= button_to image_tag("logout.png") , "/logout" , data: { turbo_method: :post}%>
+                <%= button_to image_tag("logout.png") , "/logout" %>
             </div>
         <% end %>
         <%# フォロー・リム－ブボタン %>
         <% if @user != @current_user %>
             <div class="follow-unfollow">
                 <% if @user.is_followed_by?(@current_user) %>
-                    <%= link_to("フォロー解除",user_relationship_path(@user), data: {turbo_method: :delete}, class: "unfollow-btn") %>
+                    <%= button_to("フォロー解除",user_relationship_path(@user), data: {turbo_method: :delete}, class: "unfollow-btn") %>
                 <% else %>
-                    <%= link_to("フォロー",user_relationships_path(@user), data: { turbo_method: :post},class: "follow-btn")%>
+                    <%= button_to("フォロー",user_relationships_path(@user), data: { turbo_method: :post},class: "follow-btn")%>
                 <% end %>
             </div>
         <% end %>

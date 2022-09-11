@@ -28,7 +28,7 @@
 <div class="post-new">
     <div class="title-container">
         <h1 class="page-title">投稿編集</h1>
-        <%= link_to image_tag("trash.png"),"/posts/#{@post.id}/destroy" ,data: { turbo_method: :post, turbo_confirm: "本当に削除しますか？"} , class:"delete-btn"%>
+        <%= button_to image_tag("trash.png"),"/posts/#{@post.id}/destroy", class:"delete-btn"%>
     </div>
     <div class="post-container">
         <%= form_tag("/posts/#{@post.id}/update" , {multipart:true}) do %>

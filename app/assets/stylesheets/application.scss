@@ -295,11 +295,12 @@
         .comments{
             .comments-containers{
                 margin-bottom: 10px;
+                margin-top: 10px;
                 .comments-container{
                     text-align: left;
                     margin-left: 12.5%;
                     display: flex;
-                    a{
+                    button{
                         width: 25px;
                         height: 25px;
                         margin-top: 5px;
@@ -310,7 +311,7 @@
                     }
                     p{
                         margin-top: 5px;
-                        margin-left: 5px;
+                        margin-left: 10px;
                         margin-bottom: 5px;
                     }
                     .delete-btn{
@@ -1045,12 +1046,13 @@
         }
         .comments{
             .comments-containers{
+                margin-top: 10px;
                 margin-bottom: 10px;
                 .comments-container{
                     text-align: left;
 
                     display: flex;
-                    a{
+                    button{
                         width: 25px;
                         height: 25px;
                         margin-top: 5px;

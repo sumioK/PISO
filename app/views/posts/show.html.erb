@@ -18,10 +18,10 @@
     <%# いいね機能 %>
     <div class="like">
     <% if Like.find_by(user_id: @current_user.id , post_id: @post.id)%>
-        <%= button_to image_tag("like.png"),"/likes/#{@post.id}/destroy" ,data: { turbo_method: :post} %>
+        <%= button_to image_tag("like.png"),"/likes/#{@post.id}/destroy" %>
         <p><%= @likes_count %></p>
     <% else %>
-        <%= button_to image_tag("unlike.png"),"/likes/#{@post.id}/create", data: { turbo_method: :post} %>
+        <%= button_to image_tag("unlike.png"),"/likes/#{@post.id}/create"%>
         <% if @likes_count > 0 %>
             <p><%= @likes_count %></p>
         <% end %>
@@ -32,12 +32,12 @@
         <div class="comments-containers">
             <% @comments.each do |comment| %>
                 <div class="comments-container">
-                    <%= link_to image_tag("/user_images/#{comment.user.profiel_image}") , "/users/#{comment.user.id}" %>
+                    <%= button_to image_tag("/user_images/#{comment.user.profiel_image}") , "/users/#{comment.user.id}" %>
                     <p>
                         <%= comment.user.name %> : <%=comment.comment %>  
                     </p>
                     <% if comment.user_id == @current_user.id %>
-                        <%= link_to image_tag("trash.png"),"/comments/#{comment.id}/destroy", data: { turbo_method: :post, turbo_confirm: "本当に削除しますか？"} , class:"delete-btn"%>
+                        <%= button_to image_tag("trash.png"),"/comments/#{comment.id}/destroy", class:"delete-btn"%>
                     <% end %>
                 </div>
             <% end %>
