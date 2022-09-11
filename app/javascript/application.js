@@ -2,10 +2,9 @@
 import { Turbo } from "@hotwired/turbo-rails"
 Turbo.session.drive = false
 
-import "controllers"
+import "./controllers"
 import "./custom/users_show.js"
 import "./custom/prview.js"
 
-//= require rails-ujs
 //= require jquery
 //= require jquery_ujs
