@@ -34,10 +34,12 @@
                             <p><%= post.likes.count %></p>
                     <% end %>
                 </div>
-                <%# コメントフォーム %>
-                <div class="post-content">
-                    <p><%= safe_join(post.content.split("\n"),tag(:br)) %></p>
-                </div>
+                <%# contents area %>
+                <% if post.content != nil %>
+                    <div class="post-content">
+                        <p><%= safe_join(post.content.split("\n"),tag(:br)) %></p>
+                    </div>
+                <% end %>
             </div>
         <% end %>
     </div>
