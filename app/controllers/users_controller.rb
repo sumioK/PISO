@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(
       name: params[:name],
       email: params[:email],
-      password: params[:password],
+      password_digest: params[:password],
       profiel_image: "default_user.jpg"
     )
       if params[:password] == params[:password2] && @user.save
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 
   def login
     @user = User.find_by(email: params[:email])
-    if @user && @user.password == params[:password]
+    if @user && @user.password_digest == params[:password]
       session[:user_id] = @user.id
       flash[:notice] = "ログインに成功しました"
       redirect_to("/users/#{@user.id}")

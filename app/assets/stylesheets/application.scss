@@ -4,6 +4,12 @@
         margin: 0;
         padding-top: 57px;
         background-color: white;
+        button{
+            background-color: white;
+            border: none;
+            cursor: pointer;
+            padding-left: 0;
+        }
         header{
             width: 100%;
             height: 56px;
@@ -216,7 +222,7 @@
                     display: flex;
                     height: 25px;
                     padding: 10px;
-                    a{
+                    button{
                         height: 25px;
                         img{
                             width: 25px;
@@ -965,7 +971,7 @@
                     display: flex;
                     height: 20px;
                     padding: 5px;
-                    a{
+                    button{
                         height: 20px;
                         img{
                             width: 20px;

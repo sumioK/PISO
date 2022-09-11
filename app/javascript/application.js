@@ -6,5 +6,6 @@ import "controllers"
 import "./custom/users_show.js"
 import "./custom/prview.js"
 
+//= require rails-ujs
 //= require jquery
 //= require jquery_ujs
