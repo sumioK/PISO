@@ -28,7 +28,13 @@ RSpec.describe "Users", type: :request do
     end
 
     it "can not access delete without login" do
-      post "/users/1/delete"
+      user = User.create(
+        name: "Jack",
+        email: "jack@example.com",
+        password: "password",
+        introduction: "test"
+      )
+      post "/users/#{user.id}/delete"
       expect(response).to have_http_status(302)
     end
 
