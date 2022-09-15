@@ -5,42 +5,40 @@ RSpec.describe Comment, type: :model do
 
     it "can comments while comment" do
       user = User.create(
-        id: 1,
         name: "Jack",
         email: "jack@example.com",
         password: "password",
         introduction: "test"
       )
       post = Post.create(
-        user_id: 1,
+        user_id: user.id,
         image: "sample.jpg",
         content: "test"
       )
       comment = Comment.new(
         comment: "test comment",
-        user_id: 1,
-        post_id: 1
+        user_id: user.id,
+        post_id: post.id
       )
       expect(comment).to be_valid
     end
 
     it "can't comments without comment" do
       user = User.create(
-        id: 1,
         name: "Jack",
         email: "jack@example.com",
         password: "password",
         introduction: "test"
       )
       post = Post.create(
-        user_id: 1,
+        user_id: user.id,
         image: "sample.jpg",
         content: "test"
       )
       comment = Comment.new(
         comment: "",
-        user_id: 1,
-        post_id: 1
+        user_id: user.id,
+        post_id: post.id
       )
       expect(comment).to be_invalid
     end
