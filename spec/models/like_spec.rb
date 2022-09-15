@@ -18,7 +18,7 @@ RSpec.describe Like, type: :model do
     )
     like = Like.create(
       user_id: user.id,
-      post_id: user2.id
+      post_id: post.id
     )
     expect(like).to be_valid
   end
@@ -40,7 +40,7 @@ RSpec.describe Like, type: :model do
     )
     like = Like.create(
       user_id: user.id,
-      post_id: user2.id
+      post_id: post.id
     )
     like.destroy
     expect(user.likes).to_not include like
