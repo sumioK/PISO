@@ -13,12 +13,12 @@ RSpec.describe Like, type: :model do
       password: "password"
     )
     post = Post.create(
-      user_id: 2,
+      user_id: user2.id,
       image: "image.jpg",
     )
     like = Like.create(
-      user_id: 1,
-      post_id: 2
+      user_id: user.id,
+      post_id: user2.id
     )
     expect(like).to be_valid
   end

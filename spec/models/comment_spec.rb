@@ -45,21 +45,20 @@ RSpec.describe Comment, type: :model do
 
     it "can updates with comment" do
       user = User.create(
-        id: 1,
         name: "Jack",
         email: "jack@example.com",
         password: "password",
         introduction: "test"
       )
       post = Post.create(
-        user_id: 1,
+        user_id: user.id,
         image: "sample.jpg",
         content: "test"
       )
       comment = Comment.create(
         comment: "test comment",
-        user_id: 1,
-        post_id: 1
+        user_id: user.id,
+        post_id: post.id
       )
       comment.update(
         comment: "changed comment"
@@ -69,21 +68,20 @@ RSpec.describe Comment, type: :model do
 
     it "can't updates without comment" do
       user = User.create(
-        id: 1,
         name: "Jack",
         email: "jack@example.com",
         password: "password",
         introduction: "test"
       )
       post = Post.create(
-        user_id: 1,
+        user_id: user.id,
         image: "sample.jpg",
         content: "test"
       )
       comment = Comment.create(
         comment: "",
-        user_id: 1,
-        post_id: 1
+        user_id: user.id,
+        post_id: post.id
       )
       expect(comment).to be_invalid
     end
@@ -93,21 +91,20 @@ RSpec.describe Comment, type: :model do
 
     it "destroy works" do
       user = User.create(
-        id: 1,
         name: "Jack",
         email: "jack@example.com",
         password: "password",
         introduction: "test"
       )
       post = Post.create(
-        user_id: 1,
+        user_id: user.id,
         image: "sample.jpg",
         content: "test"
       )
       comment = Comment.create(
         comment: "",
-        user_id: 1,
-        post_id: 1
+        user_id: user.id,
+        post_id: post.id
       )
       comment.destroy
       expect(user.comments).to_not include comment
