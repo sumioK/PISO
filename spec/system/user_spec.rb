@@ -7,11 +7,12 @@ RSpec.describe 'Users', type: :system do
                 it 'ユーザーの新規作成が成功する' do
                     visit "/signup"
                     fill_in "name", with: "user001"
-                    fill_in "email", with: "user001@example.com"
+                    fill_in "email", with: "user002@example.com"
                     fill_in "password", with: "password"
                     fill_in "password2", with: "password"
                     click_button "登録"
                     expect(page).to have_content "ユーザー登録に成功しました"
+                    
                 end
             end
             context 'メールアドレスが未入力' do
@@ -59,23 +60,53 @@ RSpec.describe 'Users', type: :system do
             end
         end
         context 'ログインしていない状態' do
-            it 'ユーザー一覧のページが表示されない'
-        end
-        context 'ログインしていない状態' do
-            it '投稿ページへのアクセスが失敗する'
+            it 'ユーザー一覧のページが表示されない' do
+                visit "/users/index"
+                expect(current_path).to eq "/login"
+                expect(page).to have_content "ログインが必要です"
+            end
         end
     end
 
 
     describe 'ログイン後' do
-        before { login_as(user) }
-
-        describe 'ユーザー編集' do
-            context 'フォームの入力値が正常' do
-                it 'ユーザーの編集が成功する'
+        before do
+            user = User.create(
+                name: "user003",
+                email: "user003@example.com",
+                password_digest: "password"
+            )
+        end
+        describe 'ページアクセス' do
+            context 'ユーザーページへアクセス' do
+                it 'ユーザー一覧が表示される' do
+                    visit "/login"
+                    fill_in "email", with: "user003@example.com"
+                    fill_in "password", with: "password"
+                    click_button "ログイン"
+                    visit "/users/index"
+                    expect(current_path).to eq "/users/index"
+                end
             end
-            context '他ユーザーの編集ページにアクセス' do
-                it '編集ページへのアクセスが失敗する'
+            context 'ログインページにアクセスする' do
+                it 'アクセスに失敗する' do
+                    visit "/login"
+                    fill_in "email", with: "user003@example.com"
+                    fill_in "password", with: "password"
+                    click_button "ログイン"
+                    visit "/login"
+                    expect(page).to have_content "すでにログインしています"
+                end
+            end
+            context '新規登録ページにアクセスする' do
+                it 'アクセスに失敗する' do
+                    visit "/login"
+                    fill_in "email", with: "usger003@example.com"
+                    fill_in "password", with: "password"
+                    click_button "ログイン"
+                    visit "/signup"
+                    expect(page).to have_content "すでにログインしています"
+                end
             end
         end
         describe 'マイページ' do
