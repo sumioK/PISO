@@ -1,6 +1,4 @@
 version: '3'
-volumes:
-    data:
 services:
     web:
         build: .
@@ -10,12 +8,20 @@ services:
             - '.:/Piso'
         tty: true
         stdin_open: true
-        environment:
-            - 'DATABASE_PASSWORD=password' 
         depends_on: 
             - db
+            - selenium_chrome
         links:
             - db
+        environment:
+            - 'DATABASE_PASSWORD=password'
+            - "SELENIUM_DRIVER_URL=http://selenium_chrome:4444/wd/hub"
+    selenium_chrome:
+        image: selenium/standalone-chrome-debug
+        logging:
+            driver: none
+        ports:
+            - 4444:4444
     db:
         image: mysql:5.7
         ports:
@@ -24,3 +30,5 @@ services:
             - 'data:/var/lib/mysql'
         environment:
             MYSQL_ROOT_PASSWORD: password
+volumes:
+    data:
