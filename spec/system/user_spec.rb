@@ -77,6 +77,12 @@ RSpec.describe 'Users', type: :system do
                 email: "user003@example.com",
                 password_digest: "password"
             )
+            user1 = User.create(
+                id:4,
+                name: "user004",
+                email: "user004@example.com",
+                password_digest: "password" 
+            )
         end
         describe 'ページアクセス' do
             context 'ログインページにアクセスする' do
@@ -138,6 +144,16 @@ RSpec.describe 'Users', type: :system do
                     click_button "ログイン"
                     visit "/users/3/edit"
                     expect(current_path).to eq "/users/3/edit"
+                end
+            end
+            context '他人のユーザー編集画面にアクセスする' do
+                it 'ユーザー編集画面が表示される' do
+                    visit "/login"
+                    fill_in "email", with: "user003@example.com"
+                    fill_in "password", with: "password"
+                    click_button "ログイン"
+                    visit "/users/4"
+                    expect(current_path).to eq "/users/4"
                 end
             end
         end
