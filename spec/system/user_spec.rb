@@ -72,22 +72,13 @@ RSpec.describe 'Users', type: :system do
     describe 'ログイン後' do
         before do
             user = User.create(
+                id:3,
                 name: "user003",
                 email: "user003@example.com",
                 password_digest: "password"
             )
         end
         describe 'ページアクセス' do
-            context 'ユーザーページへアクセス' do
-                it 'ユーザー一覧が表示される' do
-                    visit "/login"
-                    fill_in "email", with: "user003@example.com"
-                    fill_in "password", with: "password"
-                    click_button "ログイン"
-                    visit "/users/index"
-                    expect(current_path).to eq "/users/index"
-                end
-            end
             context 'ログインページにアクセスする' do
                 it 'アクセスに失敗する' do
                     visit "/login"
@@ -101,17 +92,38 @@ RSpec.describe 'Users', type: :system do
             context '新規登録ページにアクセスする' do
                 it 'アクセスに失敗する' do
                     visit "/login"
-                    fill_in "email", with: "usger003@example.com"
+                    fill_in "email", with: "user003@example.com"
                     fill_in "password", with: "password"
                     click_button "ログイン"
                     visit "/signup"
                     expect(page).to have_content "すでにログインしています"
                 end
             end
+            context 'ユーザーページへアクセス' do
+                it 'ユーザー一覧が表示される' do
+                    visit "/login"
+                    fill_in "email", with: "user003@example.com"
+                    fill_in "password", with: "password"
+                    click_button "ログイン"
+                    visit "/users/index"
+                    expect(current_path).to eq "/users/index"
+                end
+            end
+        
+            context '投稿画面にアクセスする' do
+                it '投稿画面が表示される' do
+                    visit "/login"
+                    fill_in "email", with: "user003@example.com"
+                    fill_in "password", with: "password"
+                    click_button "ログイン"
+                    visit "/posts/new"
+                    expect(current_path).to eq "/posts/new"
+                end
+            end
         end
-        describe 'マイページ' do
-            context 'タスクを作成' do
-                it '新規作成したタスクが表示される'
+        describe 'POST' do
+            context '新規投稿' do
+                it '新規投稿後に投稿詳細画面へ遷移する'
             end
         end
     end
