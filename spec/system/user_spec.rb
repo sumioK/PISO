@@ -120,6 +120,16 @@ RSpec.describe 'Users', type: :system do
                     expect(current_path).to eq "/posts/new"
                 end
             end
+            context 'ユーザー画面にアクセスする' do
+                it 'ユーザー情報が表示される' do
+                    visit "/login"
+                    fill_in "email", with: "user003@example.com"
+                    fill_in "password", with: "password"
+                    click_button "ログイン"
+                    visit "/users/3"
+                    expect(current_path).to eq "/users/3"
+                end
+            end
         end
         describe 'POST' do
             context '新規投稿' do
