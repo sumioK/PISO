@@ -146,8 +146,8 @@ RSpec.describe 'Users', type: :system do
                     expect(current_path).to eq "/users/3/edit"
                 end
             end
-            context '他人のユーザー編集画面にアクセスする' do
-                it 'ユーザー編集画面が表示される' do
+            context '他人のユーザー画面にアクセスする' do
+                it 'ユーザー画面が表示される' do
                     visit "/login"
                     fill_in "email", with: "user003@example.com"
                     fill_in "password", with: "password"
@@ -157,10 +157,20 @@ RSpec.describe 'Users', type: :system do
                 end
             end
         end
-        describe 'POST' do
-            context '新規投稿' do
-                it '新規投稿後に投稿詳細画面へ遷移する'
+        context '他人のユーザー編集画面にアクセスする' do
+            it 'アクセスできない' do
+                visit "/login"
+                fill_in "email", with: "user003@example.com"
+                fill_in "password", with: "password"
+                click_button "ログイン"
+                visit "/users/4/edit"
+                expect(page).to have_content "権限がありません"
             end
         end
+        # describe 'POST' do
+        #     context '新規投稿' do
+        #         it '新規投稿後に投稿詳細画面へ遷移する'
+        #     end
+        # end
     end
 end
