@@ -18,7 +18,7 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id
         flash[:notice] ="ユーザー登録に成功しました"
         redirect_to("/posts/index")
-      elsif params[:name].blank?
+      elsif params[:name].blank? 
         flash[:alert] = "ユーザー名を登録してください"
         redirect_to("/signup")
       elsif params[:email].blank?
