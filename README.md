@@ -1,24 +1,25 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## アプリケーション名
+PISO
 
-Things you may want to cover:
+## アプリケーション概要
+ペットの画像を共有するアプリケーションです。  
+### URL  
+https://piso-animals.com  
+### テスト用アカウント  
+メールアドレス:pisotestuser@example.com  
+パスワード:pisotest1234
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 使用技術
+* Ruby 3.1.2
+* Ruby on Rails 7.0.4
+* RSpec
+* MySQL
+* UNICOEN
+* Nginx
+* JavaScript
+* Docker/Docker-compose
+* CircleCi
+* Capistrano
+* AWS
