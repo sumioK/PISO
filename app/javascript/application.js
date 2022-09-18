@@ -5,6 +5,7 @@ Turbo.session.drive = false
 import "./controllers"
 import "./custom/users_show.js"
 import "./custom/prview.js"
+import "./custom/scroll.js"
 
 //= require jquery
 //= require jquery_ujs

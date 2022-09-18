@@ -29,7 +29,8 @@ class PostsController < ApplicationController
 
   def index
     if !params[:serch] || params[:serch] == ""
-      @posts = Post.all.order(created_at: :desc)
+      # @posts = Post.all.order(created_at: :desc)
+      @posts = Post.page(params[:page]).per(5).order(created_at: :desc)
     else
       @posts = Post.where("content LIKE ?","%#{params[:serch]}%")
     end
@@ -38,7 +39,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find_by(id:params[:id])
     @likes_count = Like.where(post_id: @post.id).count
-    @comments = Comment.where(post_id: @post.id).order(created_at: :asc)
+    @comments = Comment.where(post_id: @post.id).order(created_at: :asc).order(created_at: :desc)
   end
 
   def edit
