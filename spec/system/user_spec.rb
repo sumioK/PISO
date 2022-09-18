@@ -88,84 +88,56 @@ RSpec.describe 'Users', type: :system do
                 user_id:3,
                 image:"sample.jpg"
             )
+            visit "/login"
+            fill_in "email", with: "user003@example.com"
+            fill_in "password", with: "password"
+            click_button "ログイン"
         end
         describe 'ページアクセス' do
             context 'ログインページにアクセスする' do
                 it 'アクセスに失敗する' do
-                    visit "/login"
-                    fill_in "email", with: "user003@example.com"
-                    fill_in "password", with: "password"
-                    click_button "ログイン"
                     visit "/login"
                     expect(page).to have_content "すでにログインしています"
                 end
             end
             context '新規登録ページにアクセスする' do
                 it 'アクセスに失敗する' do
-                    visit "/login"
-                    fill_in "email", with: "user003@example.com"
-                    fill_in "password", with: "password"
-                    click_button "ログイン"
                     visit "/signup"
                     expect(page).to have_content "すでにログインしています"
                 end
             end
             context 'ユーザーページへアクセス' do
                 it 'ユーザー一覧が表示される' do
-                    visit "/login"
-                    fill_in "email", with: "user003@example.com"
-                    fill_in "password", with: "password"
-                    click_button "ログイン"
                     visit "/users/index"
                     expect(current_path).to eq "/users/index"
                 end
             end
             context '投稿画面にアクセスする' do
                 it '投稿画面が表示される' do
-                    visit "/login"
-                    fill_in "email", with: "user003@example.com"
-                    fill_in "password", with: "password"
-                    click_button "ログイン"
                     visit "/posts/new"
                     expect(current_path).to eq "/posts/new"
                 end
             end
             context '投稿詳細画面にアクセスする' do
                 it 'アクセスに成功する' do
-                    visit "/login"
-                    fill_in "email", with: "user003@example.com"
-                    fill_in "password", with: "password"
-                    click_button "ログイン"
                     visit "/posts/1"
                     expect(current_path).to eq "/posts/1"
                 end
             end
             context 'ユーザー画面にアクセスする' do
                 it 'ユーザー情報が表示される' do
-                    visit "/login"
-                    fill_in "email", with: "user003@example.com"
-                    fill_in "password", with: "password"
-                    click_button "ログイン"
                     visit "/users/3"
                     expect(current_path).to eq "/users/3"
                 end
             end
             context 'ユーザー編集画面にアクセスする' do
                 it 'ユーザー編集画面が表示される' do
-                    visit "/login"
-                    fill_in "email", with: "user003@example.com"
-                    fill_in "password", with: "password"
-                    click_button "ログイン"
                     visit "/users/3/edit"
                     expect(current_path).to eq "/users/3/edit"
                 end
             end
             context '他人のユーザー画面にアクセスする' do
                 it 'ユーザー画面が表示される' do
-                    visit "/login"
-                    fill_in "email", with: "user003@example.com"
-                    fill_in "password", with: "password"
-                    click_button "ログイン"
                     visit "/users/4"
                     expect(current_path).to eq "/users/4"
                 end
@@ -173,10 +145,6 @@ RSpec.describe 'Users', type: :system do
         end
         context '他人のユーザー編集画面にアクセスする' do
             it 'アクセスできない' do
-                visit "/login"
-                fill_in "email", with: "user003@example.com"
-                fill_in "password", with: "password"
-                click_button "ログイン"
                 visit "/users/4/edit"
                 expect(page).to have_content "権限がありません"
             end
@@ -184,10 +152,6 @@ RSpec.describe 'Users', type: :system do
         describe 'POST' do
             context '新規投稿' do
                 it '写真・文章をともに選択すると投稿に成功する' do
-                    visit "/login"
-                    fill_in "email", with: "user003@example.com"
-                    fill_in "password", with: "password"
-                    click_button "ログイン"
                     visit "/posts/new"
                     attach_file("post-img", "#{Rails.root}/spec/sample.jpg", visible: true)
                     fill_in "content", with: "test sentence"
@@ -197,10 +161,6 @@ RSpec.describe 'Users', type: :system do
                 end 
 
                 it '画像のみの投稿が成功する' do
-                    visit "/login"
-                    fill_in "email", with: "user003@example.com"
-                    fill_in "password", with: "password"
-                    click_button "ログイン"
                     visit "/posts/new"
                     attach_file("post-img", "#{Rails.root}/spec/sample.jpg", visible: true)
                     click_button "投稿"
@@ -208,10 +168,6 @@ RSpec.describe 'Users', type: :system do
                 end
                 
                 it '画像がない投稿が失敗する' do
-                    visit "/login"
-                    fill_in "email", with: "user003@example.com"
-                    fill_in "password", with: "password"
-                    click_button "ログイン"
                     visit "/posts/new"
                     fill_in "content", with: "test sentence"
                     click_button "投稿"
