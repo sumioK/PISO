@@ -184,12 +184,15 @@ RSpec.describe 'Users', type: :system do
                 before do
                     visit "/posts/1/edit"
                 end
+
                 it 'contentのみの編集が成功する' do
                     fill_in "content", with: "test content"
                     click_button "更新"
                     expect(current_path).to eq "/posts/1"
                     expect(page).to have_content "test content"
+                    expect(page).to have_content "編集に成功しました"
                 end
+
                 it '画像のみの編集が成功する' do
                     attach_file("post-img",  "#{Rails.root}/spec/sample1.jpg", visible: true)
                     click_button "更新"
@@ -197,9 +200,19 @@ RSpec.describe 'Users', type: :system do
                     expect(page).to have_content "編集に成功しました"
                 end
 
-                it '画像・contentの編集が成功する'
+                it '画像・contentの編集が成功する' do
+                    attach_file("post-img",  "#{Rails.root}/spec/sample1.jpg", visible: true)
+                    fill_in "content", with: "test content"
+                    click_button "更新"
+                    expect(current_path).to eq "/posts/1"
+                    expect(page).to have_content "test content"
+                    expect(page).to have_content "編集に成功しました"
+                end
             end
             context 'ユーザー編集' do
+                before do
+                    visit "/users/1/edit"
+                end
                 it 'ユーザー名が空の場合更新に失敗する'
 
                 it 'メールアドレスが不正な場合更新に失敗する'
