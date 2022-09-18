@@ -206,6 +206,7 @@ RSpec.describe 'Users', type: :system do
                     click_button "投稿"
                     expect(current_path).to eq "/posts/index"
                 end
+
             end
             
         end
