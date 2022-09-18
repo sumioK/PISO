@@ -88,6 +88,11 @@ RSpec.describe 'Users', type: :system do
                 user_id:3,
                 image:"sample.jpg"
             )
+            post1 = Post.create(
+                id:2,
+                user_id:3,
+                image:"sample1.jpg"
+            )
             visit "/login"
             fill_in "email", with: "user003@example.com"
             fill_in "password", with: "password"
@@ -174,6 +179,35 @@ RSpec.describe 'Users', type: :system do
                     expect(page).to have_content "画像が選択されていません"
                     expect(current_path).to eq "/posts/new"
                 end
+            end
+            context '投稿編集' do
+                before do
+                    visit "/posts/1/edit"
+                end
+                it 'contentのみの編集が成功する' do
+                    fill_in ""
+                end
+                it '画像のみの編集が成功する' do
+
+                end
+                it '画像・contentの編集が成功する' do
+
+                end
+            end
+            context 'ユーザー編集' do
+                it 'ユーザー名が空の場合更新に失敗する' do
+
+                end
+                it 'メールアドレスが不正な場合更新に失敗する' do
+
+                end
+                it '何も入力していない更新が成功する' do
+
+                end
+                it '画像を選択しての更新が成功する' do
+
+                end
+                it 'プロフィールが空の場合も投稿に成功する'
             end
             
         end
