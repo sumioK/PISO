@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Comment, type: :model do
   describe "valid" do
 
-    it "can comments while comment" do
+    it "コメントが送信できる" do
       user = User.create(
         name: "Jack",
         email: "jack@example.com",
@@ -23,7 +23,7 @@ RSpec.describe Comment, type: :model do
       expect(comment).to be_valid
     end
 
-    it "can't comments without comment" do
+    it "コメントが空の場合送信できない" do
       user = User.create(
         name: "Jack",
         email: "jack@example.com",
@@ -43,7 +43,7 @@ RSpec.describe Comment, type: :model do
       expect(comment).to be_invalid
     end
 
-    it "can updates with comment" do
+    it "コメントが編集できる" do
       user = User.create(
         name: "Jack",
         email: "jack@example.com",
@@ -66,7 +66,7 @@ RSpec.describe Comment, type: :model do
       expect(comment).to be_valid
     end
 
-    it "can't updates without comment" do
+    it "コメントが空の場合更新できない" do
       user = User.create(
         name: "Jack",
         email: "jack@example.com",
@@ -87,9 +87,8 @@ RSpec.describe Comment, type: :model do
     end
   end
 
-  describe "check method" do
-
-    it "destroy works" do
+  describe "メソッドの動作確認" do
+    it "コメントの削除が行える" do
       user = User.create(
         name: "Jack",
         email: "jack@example.com",

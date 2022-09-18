@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Like, type: :model do
-  it "like create work truth" do
+  it "いいねが正常に動作する" do
     user = User.create(
       name: "A",
       email: "a@example.com",
@@ -23,7 +23,7 @@ RSpec.describe Like, type: :model do
     expect(like).to be_valid
   end
 
-  it "destroy like work truth" do
+  it "いいねが削除できる" do
     user = User.create(
       name: "A",
       email: "a@example.com",

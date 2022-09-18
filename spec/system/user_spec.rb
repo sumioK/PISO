@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe 'Users', type: :system do
-    describe 'without login' do
-        describe 'sign up' do
+    describe 'ログインしていない状態' do
+        describe '新規登録' do
             context 'フォームの入力値が正常' do
                 it 'ユーザーの新規作成が成功する' do
                     visit "/signup"
@@ -239,7 +239,7 @@ RSpec.describe 'Users', type: :system do
                     expect(page).to have_content "編集が完了しました"
                 end
             end
-            
+
         end
     end
 end

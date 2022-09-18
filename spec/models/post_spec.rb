@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-  it "valid while image content " do
+  it "正常に投稿できる " do
     user = User.create(
       id: 1,
       name: "Jack",
@@ -17,7 +17,7 @@ RSpec.describe Post, type: :model do
     expect(post).to be_valid
   end
 
-  it "valid while only image" do
+  it "画像のみの投稿が可能" do
     user = User.create(
       id: 1,
       name: "Jack",
@@ -32,7 +32,7 @@ RSpec.describe Post, type: :model do
     expect(post).to be_valid
   end
   
-  it "can not post without images" do
+  it "画像のない投稿はできない" do
     user = User.create(
       id: 1,
       name: "Jack",
@@ -48,7 +48,7 @@ RSpec.describe Post, type: :model do
     expect(post).to be_invalid
   end
 
-  it "if update's image is null image doesn't change" do
+  it "編集で画像を選択しない場合、投稿の画像は変化しない" do
     user = User.create(
       id: 1,
       name: "Jack",
@@ -68,7 +68,7 @@ RSpec.describe Post, type: :model do
       expect(post.image).to eq "sample.jpg"
   end
 
-  it "if update has image , image changes" do
+  it "編集時に画像を選択すると投稿画像が更新される" do
     user = User.create(
       id: 1,
       name: "Jack",
@@ -89,7 +89,7 @@ RSpec.describe Post, type: :model do
     expect(post.image).to eq "change.jpg"
   end
 
-  it "destroy method work" do
+  it "投稿の削除ができる" do
     user = User.create(
       id: 1,
       name: "Jack",

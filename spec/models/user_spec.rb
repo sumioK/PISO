@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe User, type: :model do
     describe 'valid' do
-        it "is valid with a name ,email, password, password2" do
+        it "正常にユーザー登録が可能" do
             user = User.new(
                 name: "Jack",
                 email: "jhon@example.com",
@@ -11,24 +11,21 @@ RSpec.describe User, type: :model do
             user.save
             expect(user).to be_valid
         end
-
-        it "is inavalid without a name" do
+        it "ユーザー名が空の場合ユーザー登録ができない" do
             user = User.new(
                 name: nil
             )
             expect(user).to be_invalid
             expect(user.errors[:name]).to include("can't be blank")
         end
-
-        it "is inavalid without a email address" do
+        it "メールアドレスが空の場合ユーザー登録ができない" do
             user = User.new(
                 email: nil
             )
             expect(user).to be_invalid
             expect(user.errors[:name]).to include("can't be blank")
         end
-        
-        it "is invalid without a fraudulent email address" do
+        it "メールアドレスに＠が含まれない場合ユーザー登録できない" do
             user = User.new(
                 name: "Jack",
                 email: "jackexample.com",
@@ -36,8 +33,7 @@ RSpec.describe User, type: :model do
             )
             expect(user).to be_invalid
         end
-
-        it "is invalid with a duplicate email" do
+        it "重複したメールアドレスが入力された場合ユーザー登録ができない" do
             User.create(
                 name: "Jack",
                 email: "jack@example.com",
@@ -53,7 +49,7 @@ RSpec.describe User, type: :model do
         end
     end
     describe 'check true value' do
-        it "name is true" do
+        it "正常な名前が入力された場合" do
             user = User.create(
                 name: "Jack",
                 email: "jack@example.com",
@@ -62,7 +58,7 @@ RSpec.describe User, type: :model do
             )
             expect(user.name).to eq "Jack"
         end
-        it "email is true" do
+        it "正常なメールアドレスが入力された場合" do
             user = User.create(
                 name: "Jack",
                 email: "jack@example.com",
@@ -71,7 +67,7 @@ RSpec.describe User, type: :model do
             )
             expect(user.name).to eq "Jack"
         end
-        it "introduction is true" do
+        it "introductionが正しく入力された場合" do
             user = User.create(
                 name: "Jack",
                 email: "jack@example.com",
@@ -80,7 +76,7 @@ RSpec.describe User, type: :model do
             )
             expect(user.name).to eq "Jack"
         end
-        it "password is true" do
+        it "passwordが正しく入力された場合" do
             user = User.create(
                 name: "Jack",
                 email: "jack@example.com",
@@ -89,7 +85,5 @@ RSpec.describe User, type: :model do
             )
             expect(user.name).to eq "Jack"
         end
-
     end
-
 end
