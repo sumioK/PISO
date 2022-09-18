@@ -83,6 +83,11 @@ RSpec.describe 'Users', type: :system do
                 email: "user004@example.com",
                 password_digest: "password" 
             )
+            post = Post.create(
+                id:1,
+                user_id:3,
+                image:"sample.jpg"
+            )
         end
         describe 'ページアクセス' do
             context 'ログインページにアクセスする' do
@@ -115,7 +120,6 @@ RSpec.describe 'Users', type: :system do
                     expect(current_path).to eq "/users/index"
                 end
             end
-        
             context '投稿画面にアクセスする' do
                 it '投稿画面が表示される' do
                     visit "/login"
@@ -124,6 +128,16 @@ RSpec.describe 'Users', type: :system do
                     click_button "ログイン"
                     visit "/posts/new"
                     expect(current_path).to eq "/posts/new"
+                end
+            end
+            context '投稿詳細画面にアクセスする' do
+                it 'アクセスに成功する' do
+                    visit "/login"
+                    fill_in "email", with: "user003@example.com"
+                    fill_in "password", with: "password"
+                    click_button "ログイン"
+                    visit "/posts/1"
+                    expect(current_path).to eq "/posts/1"
                 end
             end
             context 'ユーザー画面にアクセスする' do

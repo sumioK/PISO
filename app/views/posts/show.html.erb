@@ -13,7 +13,9 @@
     </div>
     <div class="post-body">
         <img src="<%= "/post_images/#{@post.image}" %> ">
-        <p><%=safe_join(@post.content.split("\n"),tag(:br))%></p>
+        <% if @post.content %>
+            <p><%= safe_join(@post.content.split("\n"),tag(:br)) %></p>
+        <% end %>
     </div>
     <%# いいね機能 %>
     <div class="like">
