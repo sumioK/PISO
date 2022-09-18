@@ -22,4 +22,8 @@ https://piso-animals.com
 * Docker/Docker-compose
 * CircleCi
 * Capistrano
-* AWS
+* AWS  
+    * VPC
+    * EC2
+    * Route53
+    * RDS
