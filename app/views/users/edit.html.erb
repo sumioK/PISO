@@ -1,3 +1,31 @@
+<%# プレビュー機能 %>
+<script>
+    (()=>{
+        document.addEventListener('DOMContentLoaded', () => {
+            const createImageHTML = (blob) => {
+            const imageElement = document.getElementById('edit-image');
+            const blobImage = document.createElement('img');
+            blobImage.setAttribute('class', 'edit-img')
+            blobImage.setAttribute('src', blob);
+
+            imageElement.appendChild(blobImage);
+            };
+
+            document.getElementById('user-img').addEventListener('change', (e) => {
+            const imageContent = document.querySelector('.edit-img');
+            if (imageContent){
+                imageContent.remove();
+            }
+
+            const file = e.target.files[0];
+            const blob = window.URL.createObjectURL(file);
+            createImageHTML(blob);
+            });
+        });
+    })();
+</script>
+
+<%# 編集ページ %>
 <div class="profiel-edit">
     <div class="title-container">
         <h1 class="page-title">ユーザー編集</h1>
@@ -28,29 +56,3 @@
         </div>
     <% end %>
 </div>
-<%# プレビュー機能 %>
-<script>
-    (()=>{
-        document.addEventListener('DOMContentLoaded', () => {
-            const createImageHTML = (blob) => {
-            const imageElement = document.getElementById('edit-image');
-            const blobImage = document.createElement('img');
-            blobImage.setAttribute('class', 'edit-img')
-            blobImage.setAttribute('src', blob);
-
-            imageElement.appendChild(blobImage);
-            };
-
-            document.getElementById('user-img').addEventListener('change', (e) => {
-            const imageContent = document.querySelector('.edit-img');
-            if (imageContent){
-                imageContent.remove();
-            }
-
-            const file = e.target.files[0];
-            const blob = window.URL.createObjectURL(file);
-            createImageHTML(blob);
-            });
-        });
-    })();
-</script>

@@ -185,29 +185,31 @@ RSpec.describe 'Users', type: :system do
                     visit "/posts/1/edit"
                 end
                 it 'contentのみの編集が成功する' do
-                    fill_in ""
+                    fill_in "content", with: "test content"
+                    click_button "更新"
+                    expect(current_path).to eq "/posts/1"
+                    expect(page).to have_content "test content"
                 end
                 it '画像のみの編集が成功する' do
-
+                    attach_file("post-img",  "#{Rails.root}/spec/sample1.jpg", visible: true)
+                    click_button "更新"
+                    expect(current_path).to eq "/posts/1"
+                    expect(page).to have_content "編集に成功しました"
                 end
-                it '画像・contentの編集が成功する' do
 
-                end
+                it '画像・contentの編集が成功する'
             end
             context 'ユーザー編集' do
-                it 'ユーザー名が空の場合更新に失敗する' do
+                it 'ユーザー名が空の場合更新に失敗する'
 
-                end
-                it 'メールアドレスが不正な場合更新に失敗する' do
+                it 'メールアドレスが不正な場合更新に失敗する'
 
-                end
-                it '何も入力していない更新が成功する' do
+                it '何も入力していない更新が成功する'
 
-                end
-                it '画像を選択しての更新が成功する' do
+                it '画像を選択しての更新が成功する'
 
-                end
                 it 'プロフィールが空の場合も投稿に成功する'
+
             end
             
         end

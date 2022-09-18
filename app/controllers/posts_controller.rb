@@ -55,6 +55,7 @@ class PostsController < ApplicationController
     
     if @post.save
       redirect_to("/posts/#{@post.id}")
+      flash[:notice] = "編集に成功しました"
     else
       render("posts/edit")
     end
