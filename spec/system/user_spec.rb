@@ -206,7 +206,18 @@ RSpec.describe 'Users', type: :system do
                     click_button "投稿"
                     expect(current_path).to eq "/posts/index"
                 end
-
+                
+                it '画像がない投稿が失敗する' do
+                    visit "/login"
+                    fill_in "email", with: "user003@example.com"
+                    fill_in "password", with: "password"
+                    click_button "ログイン"
+                    visit "/posts/new"
+                    fill_in "content", with: "test sentence"
+                    click_button "投稿"
+                    expect(page).to have_content "画像が選択されていません"
+                    expect(current_path).to eq "/posts/new"
+                end
             end
             
         end
