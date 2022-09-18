@@ -74,3 +74,4 @@ group :test do
 end
 
 gem "jquery-rails"
+gem "kaminari"
