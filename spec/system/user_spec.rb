@@ -181,10 +181,22 @@ RSpec.describe 'Users', type: :system do
                 expect(page).to have_content "権限がありません"
             end
         end
-        # describe 'POST' do
-        #     context '新規投稿' do
-        #         it '新規投稿後に投稿詳細画面へ遷移する'
-        #     end
-        # end
+    end
+
+    describe 'POST' do
+        context '新規投稿' do
+            it '写真・文章をともに選択すると投稿に成功する' do
+                visit "/login"
+                fill_in "email", with: "user003@example.com"
+                fill_in "password", with: "password"
+                click_button "ログイン"
+                visit "/posts/new"
+                attach_file "image", "#{Rails.root}/spec/sample.jpg"
+                fill_in "content", with: "test sentence"
+                click_button "投稿"
+                expect(page).to have_content "test sentence"
+                expect(current_path).to eq "/posts/2"
+            end 
+        end
     end
 end

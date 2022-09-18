@@ -19,15 +19,16 @@
     </div>
     <%# いいね機能 %>
     <div class="like">
-    <% if Like.find_by(user_id: @current_user.id , post_id: @post.id)%>
-        <%= button_to image_tag("like.png"),"/likes/#{@post.id}/destroy" %>
-        <p><%= @likes_count %></p>
-    <% else %>
-        <%= button_to image_tag("unlike.png"),"/likes/#{@post.id}/create"%>
-        <% if @likes_count > 0 %>
+        <% if Like.find_by(user_id: @current_user.id , post_id: @post.id)%>
+            <%= button_to image_tag("like.png"),"/likes/#{@post.id}/destroy" %>
             <p><%= @likes_count %></p>
+        <% else %>
+            <%= button_to image_tag("unlike.png"),"/likes/#{@post.id}/create"%>
+            <% if @likes_count > 0 %>
+                <p><%= @likes_count %></p>
+            <% end %>
         <% end %>
-    <% end %>
+        <p class="time-stamp"><%= @post.created_at %></p>
     </div>
     <%# コメント機能 %>
     <div class="comments">

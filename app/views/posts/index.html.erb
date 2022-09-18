@@ -17,7 +17,7 @@
                 <div class="post-body">
                     <%= link_to image_tag("/post_images/#{post.image}") , "/posts/#{post.id}" %>
                 </div>
-                <%# いいねボタン %>
+                <%# いいねボタン&タイムスタンプ %>
                 <div class="post-likes">
                     <% if @current_user %>
                         <% if Like.find_by(user_id:@current_user.id , post_id: post.id) %>
@@ -33,6 +33,7 @@
                             <%= button_to image_tag("unlike.png"),"/likes/#{post.id}/create" %>
                             <p><%= post.likes.count %></p>
                     <% end %>
+                    <p class="time-stamp"><%= post.created_at %></p>
                 </div>
                 <%# contents area %>
                 <% if post.content != nil %>
