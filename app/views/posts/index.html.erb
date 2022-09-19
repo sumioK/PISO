@@ -7,54 +7,61 @@
         <% end %>
     </div>
 </div>
-<div class="post-index-bigcont scroll-list jscroll">
-    <% @posts.each do |post| %>
-        <div class="posts-index">
-            <div class="icon-and-name">
-                <%= link_to image_tag("/user_images/#{post.user.profiel_image}") , "/users/#{post.user.id}" %>
-                <p><%= link_to "#{post.user.name}", "/users/#{post.user.id}" %></p>
-            </div>
-            <div class="post-body">
-                <%= link_to image_tag("/post_images/#{post.image}") , "/posts/#{post.id}" %>
-            </div>
-            <%# いいねボタン&タイムスタンプ %>
-            <div class="post-likes">
-                <% if @current_user %>
-                    <% if Like.find_by(user_id:@current_user.id , post_id: post.id) %>
-                        <%= button_to image_tag("like.png"),"/likes/#{post.id}/destroy" %>
-                        <p><%= post.likes.count %></p>
-                    <% else %>
-                        <%= button_to image_tag("unlike.png"),"/likes/#{post.id}/create" %>
-                        <% if post.likes.count > 0 %>
-                            <p><%= post.likes.count %></p>
-                        <% end %>
-                    <% end %>
-                <% else %>
-                        <%= button_to image_tag("unlike.png"),"/likes/#{post.id}/create" %>
-                        <p><%= post.likes.count %></p>
-                <% end %>
-                <p class="time-stamp"><%= post.created_at %></p>
-            </div>
-            <%# contents area %>
-            <% if post.content != nil %>
-                <div class="post-content">
-                    <p><%= safe_join(post.content.split("\n"),tag(:br)) %></p>
+
+<div class="scroll-list jscroll">
+    <div class="post-index-bigcont">
+        <% @posts.each do |post| %>
+            <div class="posts-index">
+                <div class="icon-and-name">
+                    <%= link_to image_tag("/user_images/#{post.user.profiel_image}") , "/users/#{post.user.id}" %>
+                    <p><%= link_to "#{post.user.name}", "/users/#{post.user.id}" %></p>
                 </div>
-            <% end %>
-        </div>
-    <% end %>
-    <%= paginate @posts %>
+                <div class="post-body">
+                    <%= link_to image_tag("/post_images/#{post.image}") , "/posts/#{post.id}" %>
+                </div>
+                <%# いいねボタン&タイムスタンプ %>
+                <div class="post-likes">
+                    <% if @current_user %>
+                        <% if Like.find_by(user_id:@current_user.id , post_id: post.id) %>
+                            <%= button_to image_tag("like.png"),"/likes/#{post.id}/destroy" %>
+                            <p><%= post.likes.count %></p>
+                        <% else %>
+                            <%= button_to image_tag("unlike.png"),"/likes/#{post.id}/create" %>
+                            <% if post.likes.count > 0 %>
+                                <p><%= post.likes.count %></p>
+                            <% end %>
+                        <% end %>
+                    <% else %>
+                            <%= button_to image_tag("unlike.png"),"/likes/#{post.id}/create" %>
+                            <p><%= post.likes.count %></p>
+                    <% end %>
+                    <p class="time-stamp"><%= post.created_at %></p>
+                </div>
+                <%# contents area %>
+                <% if post.content != nil %>
+                    <div class="post-content">
+                        <p><%= safe_join(post.content.split("\n"),tag(:br)) %></p>
+                    </div>
+                <% end %>
+            </div>
+        <% end %>
+        <%= paginate @posts %>
+    </div>
 </div>
-<%# 
-<script>
-$(window).on('scroll', function() {
-    scrollHeight = $(document).height();
-    scrollPosition = $(window).height() + $(window).scrollTop();
-    if ( (scrollHeight - scrollPosition) / scrollHeight <= 0.05) {
+
+<script type="text/javascript">
+$(document).ready(function() {
         $('.jscroll').jscroll({
-        contentSelector: '.scroll-list',
-        nextSelector: 'span.next:last a'
-    });
-}
+            contentSelector: '.scroll-list',
+            nextSelector: 'span.next:last a'
+        });
 });
-</script> %>
+</script>
+
+
+<h6>jQuery稼働テスト</h6>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("h6").text("jQuery稼働テスト(稼働中)");
+    });
+</script>

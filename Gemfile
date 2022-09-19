@@ -73,5 +73,5 @@ group :test do
     gem "database_cleaner"
 end
 
-gem "jquery-rails"
+gem "jquery-rails", "4.5.0"
 gem "kaminari"
