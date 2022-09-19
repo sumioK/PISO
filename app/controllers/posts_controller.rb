@@ -29,12 +29,11 @@ class PostsController < ApplicationController
 
   def index
     if !params[:serch] || params[:serch] == ""
-      # @posts = Post.all.order(created_at: :desc)
       @post_data = Post.all.order(created_at: :desc)
       @posts = Kaminari.paginate_array(@post_data).page(params[:page]).per(5)
-      # @posts = Post.page(params[:page]).per(5).order(created_at: :desc)
     else
-      @posts = Post.where("content LIKE ?","%#{params[:serch]}%")
+      @post_data = Post.where("content LIKE ?","%#{params[:serch]}%")
+      @posts = Kaminari.paginate_array(@post_data).page(params[:page]).per(5)
     end
   end
 
