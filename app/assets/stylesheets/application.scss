@@ -783,6 +783,12 @@
             }
         }
     }
+    nav.pagination {
+        display: none;
+    }
+    .scroll-list {
+        padding: 0;
+    }
 }
 
 
@@ -1586,5 +1592,11 @@
                 }
             }
         }
+    }
+    nav.pagination {
+        display: none;
+    }
+    .scroll-list {
+        padding: 0;
     }
 }
