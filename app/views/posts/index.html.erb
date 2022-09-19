@@ -36,7 +36,7 @@
                     <% end %>
                     <p class="time-stamp"><%= post.created_at %></p>
                 </div>
-                <%# contents area %>
+                <%# 投稿の文章 %>
                 <% if post.content != nil %>
                     <div class="post-content">
                         <p><%= safe_join(post.content.split("\n"),tag(:br)) %></p>
