@@ -28,7 +28,7 @@
                 <p><%= @likes_count %></p>
             <% end %>
         <% end %>
-        <p class="time-stamp"><%= @post.created_at %></p>
+        <p class="time-stamp"><%= @post.created_at.strftime('%Y/%m/%d %H:%M') %></p>
     </div>
     <%# コメント機能 %>
     <div class="comments">
