@@ -7,7 +7,7 @@ worker_timeout 3600 if ENV.fetch("RAILS_ENV", "development") == "development"
 
 
 # port ENV.fetch("PORT") { 3000 }
-bind "unix:///var/www/test_app/tmp/sockets/puma.sock"
+bind "unix:///var/www/PISO/tmp/sockets/puma.sock"
 
 environment ENV.fetch("RAILS_ENV") { "development" }
 
