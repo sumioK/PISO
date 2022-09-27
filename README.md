@@ -4,7 +4,7 @@
 PISO
 
 ## 2.アプリケーション概要
-ペットの画像を共有するアプリケーションです。  
+ペットの画像を共有するアプリケーションです.
 ### URL  
 https://piso-animals.com  
 ### テスト用アカウント  
@@ -16,7 +16,7 @@ https://piso-animals.com
 * Ruby on Rails 7.0.4
 * RSpec
 * MySQL
-* UNICOEN
+* Puma
 * Nginx
 * JavaScript
 * Docker/Docker-compose
@@ -30,16 +30,17 @@ https://piso-animals.com
 
 ## 4.インフラ構成  
 ### CI/CD  
-* Githubへのpush時、Circleciにより自動でRspecが実行されます。  
-* Rspecが成功した場合、CapistranoによりEC2サーバーへの自動デプロイが実行されます。
+* Githubへのpush時,Circleciにより自動でRspecが実行されます.    
+* Rspecが成功した場合、CapistranoによりEC2サーバーへの自動デプロイが実行されます.
 
 ## 5.機能一覧
-* ユーザー登録、ログイン機能(暗号化にbcryptｗ使用)
+* ユーザー登録,ログイン機能(暗号化にbcryptを使用)
 * 投稿機能
 * フォロー機能
 * コメント機能
 * いいね機能
 * 検索機能
+* 無限スクロール機能(kaminari,jscroll使用)
 
 ## 6.テスト
 * model Spec
