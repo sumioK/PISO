@@ -9,8 +9,6 @@
 # And be sure to use new-style password hashing:
 #   https://dev.mysql.com/doc/refman/5.7/en/password-hashing.html
 #
-
-#本番用-----------------------------------------------------------------------------------------------------------------------------------
 default: &default
   adapter: mysql2
   encoding: utf8
@@ -19,19 +17,6 @@ default: &default
   password:  <%= Rails.application.credentials.db[:password] %>
   host: <%= Rails.application.credentials.db[:endpoint] %>
   port: 3306
-# -----------------------------------------------------------------------------------------------------------------------------------------
-# local開発時用-----------------------------------------------------------------------------------------------------------------------------
-# default: &default
-#   adapter: mysql2
-#   encoding: utf8
-#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-#   username: root
-#   password: <%= ENV.fetch("DATABASE_PASSWORD") %>
-#   host: db
-#   port: 3306
-# -----------------------------------------------------------------------------------------------------------------------------------------
-
-
 
 development:
   <<: *default
