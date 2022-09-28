@@ -15,6 +15,3 @@ environment ENV.fetch("RAILS_ENV") { "production" }
 pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 
 plugin :tmp_restart
-
-daemonize
-stdout_redirect "#{tmp_path}/logs/puma.stdout.log", "#{tmp_path}/logs/puma.stderr.log", true
