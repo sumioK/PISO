@@ -75,3 +75,4 @@ end
 
 gem "jquery-rails", "4.5.0"
 gem "kaminari"
+gem "sd_notify"
