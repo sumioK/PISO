@@ -16,5 +16,5 @@ environment ENV.fetch("RAILS_ENV") { "production" }
 pidfile ENV.fetch("PIDFILE") { "tmp/pids/server.pid" }
 
 plugin :tmp_restart
-wokers 3
+workers 3
 daemonize
