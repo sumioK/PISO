@@ -1,0 +1,12 @@
+version: 2.1
+jobs:
+  test:
+    docker:
+      - image: sumiok/pisoweb:latest
+      - image: mysql:5.7
+      - image: selenium/standalone-chrome:latest
+    steps:
+      - checkout
+      - run:
+        name: 
+        command: 
