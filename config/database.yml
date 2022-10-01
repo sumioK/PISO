@@ -13,23 +13,14 @@ default: &default
   adapter: mysql2
   encoding: utf8
 
-production:
-  <<: *default
-  database: Piso_production
-  username:  <%= Rails.application.credentials.db[:user_name] %>
-  password:  <%= Rails.application.credentials.db[:password] %>
-  host: <%= Rails.application.credentials.db[:endpoint] %>
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  port: 3306
-
-development:
-  <<: *default
-  database: Piso_development
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: root
-  password: <%= ENV.fetch("DATABASE_PASSWORD") %>
-  host: db
-  port: 3306
+# development:
+#   <<: *default
+#   database: Piso_development
+#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+#   username: root
+#   password: <%= ENV.fetch("DATABASE_PASSWORD") %>
+#   host: db
+#   port: 3306
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -58,4 +49,11 @@ test:
 # Read https://guides.rubyonrails.org/configuring.html#configuring-a-database
 # for a full overview on how database connection configuration can be specified.
 #
-
+production:
+  <<: *default
+  database: Piso_production
+  username:  <%= Rails.application.credentials.db[:user_name] %>
+  password:  <%= Rails.application.credentials.db[:password] %>
+  host: <%= Rails.application.credentials.db[:endpoint] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  port: 3306
