@@ -979,18 +979,14 @@
             }
         }
         .post-index-bigcont{
-            padding-top: 80px;
+            padding-top: 60px;
             margin-bottom: 20px;
-            background-color: rgb(241, 241, 241);
             .posts-index{
                 background-color: white;
-                margin-top: 5px;
-                margin-bottom: 15px;
                 width: 100%;
                 text-align: center;
                 padding: 5px 0;
-                border-top: 2px solid #e9e3e3;
-                border-bottom: 2px solid #e9e3e3;
+                border-top: 1px solid black;
                 .post-body{
                     img{
                         margin-top: 10px;
@@ -1057,13 +1053,14 @@
             }
             .post-body{
                 img{
-                    padding: 10px 0;
+                    padding-top: 10px;
                     width: 100%;
                 }
                 p{
                     text-align: left;
-                    margin-top: 10px;
-                    margin-left: 5px;
+                    margin-top: 0px;
+                    margin-left: 0px;
+                    padding-left: 5px;
                     margin-bottom: 5px;
                     font-size: 12px;
                     border-bottom: 1px solid #e9e3e3;
@@ -1090,7 +1087,7 @@
             }
             .time-stamp{
                 font-size: 8px;
-                margin-top: 4px;
+                margin-top: 3px;
                 margin-left: auto;
                 padding-right: 5px;
             }
