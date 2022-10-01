@@ -2,11 +2,13 @@ version: 2.1
 jobs:
   test:
     docker:
+      - image: circleci/ruby:3.1.2
       - image: sumiok/pisoweb:latest
       - image: mysql:5.7
       - image: selenium/standalone-chrome:latest
+    working_directory: ~/project
     steps:
       - checkout
       - run:
-        name: 
-        command: 
+        name: run rspec
+        command: bundle exec rspec
