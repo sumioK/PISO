@@ -33,11 +33,28 @@
 </div>
 <h2 class="profiel-posts-title">投稿</h2>
 <div class="profiel-posts">
-    <div class="show-tab-content" >
+    <div class="show-tab-content scroll-list jscroll" >
         <% @posts.each do |post| %>
             <div class="show-post-body">
                 <%= link_to image_tag("/post_images/#{post.image}") , "/posts/#{post.id}" %>
             </div>
         <% end %>
+        <%= paginate @posts %>
     </div>
 </div>
+
+<%# 無限スクロール機能 %>
+<script type="text/javascript">
+$(document).ready(function() {
+        $('.jscroll').jscroll({
+            contentSelector: '.scroll-list',
+            nextSelector: 'span.next:last a'
+        });
+});
+</script>
+<h6>jQuery稼働テスト</h6>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("h6").text("");
+    });
+</script>
