@@ -494,8 +494,14 @@
         }
         .profiel-under-container{
             display: flex;
+            .no-mergin{
+                margin:0;
+            }
             p{
                 margin-top: 0;
+            }
+            .likes-count{
+                margin-left: 20px;
             }
             a{  
                 margin-left: 20px;
