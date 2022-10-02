@@ -26,13 +26,14 @@
     <p class="user-introduction"><%= safe_join(@user.introduction.to_s.split("\n"),tag(:br)) %></p>
     <div class="profiel-under-container">
         <p class="post-count"><%= "投稿#{@posts.length}件" %></p>
-        <%= link_to "いいね#{@posts.length}件", "/users/#{@user.id}/likes"%>
+        <%= link_to "いいね#{@likes.length}件", "/users/#{@user.id}/likes"%>
         <%= link_to "フォロー#{@user.followings.count}人", followings_user_path(@user) %>
         <%= link_to "フォロワー#{@user.followers.count}人", followers_user_path(@user) %>
     </div>
 </div>
+<h2 class="profiel-posts-title">投稿</h2>
 <div class="profiel-posts">
-    <div class="show-tab-content" data-content="0">
+    <div class="show-tab-content" >
         <% @posts.each do |post| %>
             <div class="show-post-body">
                 <%= link_to image_tag("/post_images/#{post.image}") , "/posts/#{post.id}" %>

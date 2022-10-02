@@ -362,6 +362,9 @@
                 }
             }
         }
+        .profiel-posts-title{
+            text-align: center;
+        }
         .show-tab-content{
             width: 50%;
             flex-wrap: wrap;
@@ -1131,30 +1134,13 @@
                 }
             }
         }
-        .show-titles{
-            display: flex;
-            width: 150px;
-            margin: 0 auto;
-            .show-tab-title{
-                background-color: white;
-                font-weight: 50;
-                margin-right: 10px;
-                border: black solid 1px;
-                padding: 10px;
-                font-size: 15px;
-                &:hover{
-                    opacity: 0.7;
-                    cursor: pointer;
-                }
-            }
-            .is-active{
-                background-color: black;
-                color: white;
-            }
+        .profiel-posts-title{
+            text-align: center;
+            font-size: 18px;
         }
         .show-tab-content{
             width: 90%;
-            display: none;
+            display: flex;
             flex-wrap: wrap;
             margin:10px auto;
             .show-post-body{
@@ -1292,12 +1278,18 @@
         }
         .profiel-under-container{
             display: flex;
+            flex-wrap: wrap;
             p{
+                width: 50%;
                 margin-top: 0;
                 font-size: 13px;
+                margin-bottom: 0;
+            }
+            .no-mergin{
+                margin:0;
             }
             a{  
-                margin-left: 20px;
+                width: 50%;
                 font-size: 13px;
                 color: black;
                 text-decoration: none;
@@ -1428,7 +1420,7 @@
                     padding-top: 0;
                 }
                 .delete-btn{
-                    margin-top: 7px;
+                    margin-top: 5px;
                     margin-left: 10px;
                     height: 20px;
                     img{
@@ -1525,7 +1517,7 @@
                 }
                 .delete-btn{
                     margin-left: 10px;
-                    margin-top: 18px;
+                    margin-top: 10px;
                     height: 40px;
                     img{
                         height: 20px;

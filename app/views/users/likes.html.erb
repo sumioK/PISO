@@ -31,6 +31,7 @@
         <%= link_to "フォロワー#{@user.followers.count}人", followers_user_path(@user) %>
     </div>
 </div>
+<h2 class="profiel-posts-title">いいね</h2>
 <div class="profiel-posts">
     <div class="show-tab-content">
         <% @likes.each do |like| %>
