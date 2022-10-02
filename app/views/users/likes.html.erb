@@ -32,7 +32,7 @@
 </div>
 <div class="profiel-posts">
     <div class="show-tab-content" data-content="0">
-        <% @posts.each do |post| %>
+        <% @likes.each do |post| %>
             <div class="show-post-body">
                 <%= link_to image_tag("/post_images/#{post.image}") , "/posts/#{post.id}" %>
             </div>

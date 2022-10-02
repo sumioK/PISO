@@ -39,7 +39,11 @@ class UsersController < ApplicationController
     @posts = Post.where(user_id: params[:id])
     @likes = Like.where(user_id: params[:id])
   end
-
+  def likes
+    @user = User.find_by(id: params[:id])
+    @posts = Post.where(user_id: params[:id])
+    @likes = Like.where(user_id: params[:id])
+  end
   def login_form
   end
 

@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   get 'users/index' => 'users#index'
   get 'users/:id' => 'users#show'
   get 'users/:id/edit' => 'users#edit'
+  get 'users/:id/likes' => 'users#likes'
   post 'users/:id/update' => 'users#update'
   post 'users/:id/delete' => 'users#delete'
 
