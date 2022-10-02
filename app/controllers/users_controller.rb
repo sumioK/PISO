@@ -37,8 +37,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
     @likes = Like.where(user_id: params[:id])
-    @post_data = Post.where(user_id: params[:id])
-    @posts = Kaminari.paginate_array(@post_data).page(params[:page]).per(6)
+    # @post_data = Post.where(user_id: params[:id])
+    # @posts = Kaminari.paginate_array(@post_data).page(params[:page]).per(6)
+    @posts = Post.where(user_id: params[:id])
   end
   def likes
     @user = User.find_by(id: params[:id])
