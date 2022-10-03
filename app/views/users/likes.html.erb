@@ -36,7 +36,7 @@
     <div class="show-tab-content">
         <% @likes.each do |like| %>
             <div class="show-post-body">
-                <%= link_to image_tag("/post_images/#{like.post_id}.jpg") , "/posts/#{like.id}" %>
+                <%= link_to image_tag("/post_images/#{like.post_id}.jpg") , "/posts/#{like.post_id}" %>
             </div>
         <% end %>
     </div>

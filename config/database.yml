@@ -13,6 +13,16 @@ default: &default
   adapter: mysql2
   encoding: utf8
 
+development:
+  <<: *default
+  database: Piso_development
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password: <%= ENV.fetch("DATABASE_PASSWORD") %>
+  host: db
+  port: 3306
+
+
 
 development:
   <<: *default
