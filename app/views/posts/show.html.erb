@@ -35,12 +35,12 @@
         <div class="comments-containers">
             <% @comments.each do |comment| %>
                 <div class="comments-container">
-                    <%= button_to image_tag("/user_images/#{comment.user.profiel_image}") , "/users/#{comment.user.id}" %>
+                    <%= button_to image_tag("/user_images/#{comment.user.profiel_image}") , "/users/#{comment.user_id}", method:"get" %>
                     <p>
                         <%= comment.user.name %> : <%=comment.comment %>  
                     </p>
                     <% if comment.user_id == @current_user.id %>
-                        <%= button_to image_tag("trash.png"),"/comments/#{comment.id}/destroy", class:"delete-btn"%>
+                        <%= button_to image_tag("trash.png"),"/comments/#{comment.id}/destroy", class:"delete-btn" %>
                     <% end %>
                 </div>
             <% end %>
