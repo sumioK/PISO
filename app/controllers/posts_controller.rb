@@ -36,6 +36,11 @@ class PostsController < ApplicationController
       @posts = Kaminari.paginate_array(@post_data).page(params[:page]).per(5)
     end
   end
+  
+  def limitindex
+      @posts_data = Post.where(user_id: @current_user.id).order(created_at: :desc)
+      @posts = Kaminari.paginate_array(@posts_data).page(params[:page]).per(5)
+  end
 
   def show
     @post = Post.find_by(id:params[:id])
