@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_10_05_105701) do
+ActiveRecord::Schema[7.0].define(version: 2022_10_05_113133) do
   create_table "comments", charset: "utf8", force: :cascade do |t|
     t.integer "user_id"
     t.integer "post_id"
@@ -22,17 +22,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_05_105701) do
   create_table "likes", charset: "utf8", force: :cascade do |t|
     t.integer "user_id"
     t.integer "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "notifications", charset: "utf8", force: :cascade do |t|
-    t.integer "visiter_id"
-    t.integer "visited_id"
-    t.integer "post_id"
-    t.integer "comment_id"
-    t.string "action"
-    t.boolean "checked", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
