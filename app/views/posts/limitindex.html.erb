@@ -1,13 +1,7 @@
-<div class="post-serch">
+<div class="no-post-serch">
     <h2 class="page-title">投稿一覧</h2>
-    <div class="serch-form">    
-        <%= form_tag("/posts/index" , method: :get) do %>
-            <input name="serch" class="serch-indent">
-            <input type="submit" value="検索" class="submit-btn">
-        <% end %>
-    </div>
 </div>
-<div class="post-index-bigcont">
+<div class="post-index-bigcont-without-serch">
     <div class="scroll-list jscroll">
         <% @posts.each do |post| %>
             <div class="posts-index">
