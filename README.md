@@ -20,20 +20,13 @@ https://piso-animals.com
 * Nginx
 * JavaScript
 * Docker/Docker-compose
-* CircleCi
-* Capistrano
 * AWS  
     * VPC
     * EC2
     * Route53
     * RDS
 
-## 4.インフラ構成  
-### CI/CD  
-* Githubへのpush時,Circleciにより自動でRspecが実行されます.    
-* Rspecが成功した場合、CapistranoによりEC2サーバーへの自動デプロイが実行されます.
-
-## 5.機能一覧
+## 4.機能一覧
 * ユーザー登録,ログイン機能(暗号化にbcryptを使用)
 * 投稿機能
 * フォロー機能
@@ -42,7 +35,7 @@ https://piso-animals.com
 * 検索機能
 * 無限スクロール機能(kaminari,jscroll使用)
 
-## 6.テスト
+## 5.テスト
 * model Spec
 * rquest Spec
 * system Spec
