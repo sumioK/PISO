@@ -23,7 +23,7 @@
       <div class="header-container">
         <div class="header-logo">
             <% if @current_user %>
-              <h2><%= link_to "PISO" , "/posts/limit" %></h2>
+              <h2><%= link_to "PISO" , "/posts/index" %></h2>
             <% else %>
               <h2><%= link_to "PISO" , "/posts/index" %></h2>
             <% end %>
@@ -35,8 +35,8 @@
             <li><%= link_to image_tag("signup.png"),"/signup"%></li>
             <li><%= link_to image_tag("enter.png"),"/login"%></li>
           <% else%>
-            <li><%= link_to image_tag("glass.png"),"/posts/index"%></li>
-            <li><%= link_to image_tag("dog&cat.png"),"/users/index"%></li>
+            <li><%= link_to image_tag("home1.png"),"/posts/index"%></li>
+            <li><%= link_to image_tag("dog&cat1.png"),"/users/index"%></li>
             <li><%= link_to image_tag("/user_images/#{@current_user.profiel_image}") , "/users/#{@current_user.id}"  %></li>
             <li><%= link_to image_tag("post.png") , "/posts/new" %></li>
           <% end%>

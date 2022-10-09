@@ -24,15 +24,22 @@
                         <% if Like.find_by(user_id:@current_user.id , post_id: post.id) %>
                             <%= button_to image_tag("like.png"),"/likes/#{post.id}/destroy" %>
                             <p><%= post.likes.count %></p>
+                            <%# 自分がいいねしていたら0件はありえないため条件分岐しない %>
                         <% else %>
                             <%= button_to image_tag("unlike.png"),"/likes/#{post.id}/create" %>
                             <% if post.likes.count > 0 %>
                                 <p><%= post.likes.count %></p>
+                            <% else %>
+                                <p>&nbsp;</p>
                             <% end %>
                         <% end %>
                     <% else %>
                             <%= button_to image_tag("unlike.png"),"/likes/#{post.id}/create" %>
                             <p><%= post.likes.count %></p>
+                    <% end %>
+                    <%= link_to image_tag("comment.png"), "/posts/#{post.id}", class:"comment-icon"%>
+                    <% if post.comments.length > 0 %>
+                        <p><%= post.comments.length %></p>
                     <% end %>
                     <p class="time-stamp"><%= post.created_at.strftime('%Y/%m/%d %H:%M') %></p>
                 </div>
