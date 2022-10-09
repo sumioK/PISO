@@ -1,13 +1,6 @@
-<div class="user-serch-form">
-    <h1 class="page-title">フォロー一覧</h1>
-    <div class="serch-form">
-        <%= form_tag("/users/index" , method: :get) do %>
-            <input name="serch" class="serch-indent">
-            <input type="submit" value="検索" class="submit-btn">
-        <% end %>
-    </div>
-</div>
-<div class="users-index">
+<%= render "profiel" %>
+<h2 class="profiel-posts-title">フォロー</h2>
+<div class="users-follow-index">
     <% @users.each do |user| %>
         <%= link_to "/users/#{user.id}" do %>
             <div class="user-cont">

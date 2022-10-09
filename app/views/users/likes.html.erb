@@ -1,36 +1,4 @@
-<div class="show-profiel">
-    <div class="show-profiel-line">
-        <div class="show-profiel-image">
-            <img src="<%= "/user_images/#{@user.profiel_image}"%>">
-        </div>
-        <% if @user == @current_user %>
-            <div class="setting-image">
-                <%= link_to image_tag("setting.png"),"/users/#{@user.id}/edit" %>
-            </div>
-            <div class="logout-button">
-                <%= button_to image_tag("logout.png") , "/logout" %>
-            </div>
-        <% end %>
-        <%# フォロー・リム－ブボタン %>
-        <% if @user != @current_user %>
-            <div class="follow-unfollow">
-                <% if @user.is_followed_by?(@current_user) %>
-                    <%= button_to("フォロー解除",user_relationship_path(@user),  {method: :delete, class: "unfollow-btn"}) %>
-                <% else %>
-                    <%= button_to("フォロー",user_relationships_path(@user), class: "follow-btn")%>
-                <% end %>
-            </div>
-        <% end %>
-    </div>
-    <h3 class="profiel-name"><%= @user.name %></h3>
-    <p class="user-introduction"><%= safe_join(@user.introduction.to_s.split("\n"),tag(:br)) %></p>
-    <div class="profiel-under-container">
-        <%= link_to "投稿#{@posts.length}件", "/users/#{@user.id}", class:"no-mergin"%>
-        <p class="likes-count"><%= "いいね#{@likes.length}件" %></p>
-        <%= link_to "フォロー#{@user.followings.count}人", followings_user_path(@user) %>
-        <%= link_to "フォロワー#{@user.followers.count}人", followers_user_path(@user) %>
-    </div>
-</div>
+<%= render "profiel" %>
 <h2 class="profiel-posts-title">いいね</h2>
 <div class="profiel-posts">
     <div class="show-tab-content">

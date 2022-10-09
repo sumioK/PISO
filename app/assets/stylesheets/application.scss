@@ -635,6 +635,49 @@
             }
             
         }
+        .users-follow-index{
+            width: 100%;
+            margin: 0 auto;
+            background-color: white;
+            a{
+                text-decoration: none;
+                color: black;
+                .user-cont{
+                    display: flex;
+                    padding: 16px 12px;
+                    border-left: 1px solid rgb(239, 243, 244);
+                    border-right: 1px solid rgb(239, 243, 244);
+                    &:hover{
+                        background-color: rgb(235, 235, 235);
+                        opacity: 0.7;
+                        cursor: pointer;
+                    }
+                    .user-img{
+                        img{
+                            width: 25px;
+                            height:25px;
+                            object-fit: cover;
+                        }
+                    }
+                    .prof-sentence{
+                        margin-left: 10px;
+                        .user-name{
+                            font-size: 15px;
+                            margin-top: 0;
+                            margin-bottom: 0;
+                        }
+                        .user-introduction{
+                            max-height: 55px;
+                            overflow: hidden;
+                            font-size: 12px;
+                            margin-top: 0;
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+            }
+            
+        }
         .profiel-edit{
             width:80%;
             margin: 20px auto;
@@ -1383,6 +1426,50 @@
             width: 100%;
             margin: 0 auto;
             margin-top: 64px;
+            background-color: white;
+            a{
+                text-decoration: none;
+                color: black;
+                .user-cont{
+                    display: flex;
+                    padding: 16px 12px;
+                    border-left: 1px solid rgb(239, 243, 244);
+                    border-right: 1px solid rgb(239, 243, 244);
+                    &:hover{
+                        background-color: rgb(235, 235, 235);
+                        opacity: 0.7;
+                        cursor: pointer;
+                    }
+                    .user-img{
+                        img{
+                            width: 25px;
+                            height:25px;
+                            object-fit: cover;
+                        }
+                    }
+                    .prof-sentence{
+                        margin-left: 10px;
+                        .user-name{
+                            font-size: 15px;
+                            margin-top: 0;
+                            margin-bottom: 0;
+                        }
+                        .user-introduction{
+                            max-height: 55px;
+                            overflow: hidden;
+                            font-size: 12px;
+                            margin-top: 0;
+                            margin-bottom: 0;
+                        }
+                    }
+                }
+            }
+            
+        }
+        .users-follow-index{
+            width: 100%;
+            margin: 0 auto;
+            margin-top: 10px;
             background-color: white;
             a{
                 text-decoration: none;
